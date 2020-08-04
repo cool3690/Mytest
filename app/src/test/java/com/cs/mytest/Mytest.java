@@ -5,6 +5,8 @@ import android.content.Context;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -27,10 +29,16 @@ public class Mytest {
         int expect = 3;
 
         //act
-        int actual = myMath.cal(first, second );
+        for(int i=0;i<10;i++){
+            Random rand=new Random();
+            first=  rand.nextInt(100);
+            second=  rand.nextInt(100);
+            int actual = myMath.cal(first, second );
 
-        //assert
-        assertEquals(first*second, actual);
+            //assert
+            assertEquals(first*second, actual);
+        }
+
     }
 
 }
