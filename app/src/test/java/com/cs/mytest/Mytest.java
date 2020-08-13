@@ -36,7 +36,7 @@ public class Mytest {
             int actual = myMath.cal(first, second );
 
             //assert
-            assertEquals(first*second, actual);
+            assertEquals(first+second, actual);
         }
 
     }
