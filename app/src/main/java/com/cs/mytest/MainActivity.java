@@ -8,6 +8,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.LightingColorFilter;
 import android.media.AudioAttributes;
 import android.net.Uri;
 import android.os.Build;
@@ -37,7 +38,7 @@ TextView ans;
         ans=(TextView)findViewById(R.id.ans);
         btn.setOnClickListener(btnclick);
         notify.setOnClickListener(notifyclick);
-        showNotification();
+       // showNotification();
     }
     private Button.OnClickListener btnclick=new Button.OnClickListener(){
         @Override
@@ -45,6 +46,9 @@ TextView ans;
             int a= Integer.parseInt(num1.getText().toString()) ;
             int b= Integer.parseInt(num2.getText().toString()) ;
             ans.setText(cal(a,b)+"");
+            Intent intent=new Intent();
+            intent.setClass(MainActivity.this,End.class);
+            startActivity(intent);
         }
     };
     public int cal(int a,int b){
@@ -70,6 +74,8 @@ TextView ans;
                 .setContentTitle("待簽表單")
                 .setContentText("你有幾張未簽表單")
                 .setSmallIcon(R.drawable.ic_launcher_background)
+
+                .setOnlyAlertOnce(true)
                 .setContentIntent(pendingIntent);
         NotificationChannel channel;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
